@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 rootProject.name = "android-build-tools"
 
 include("plugins")
+include("version-catalog")

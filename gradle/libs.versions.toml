@@ -1,139 +1,57 @@
 [versions]
 agp = "8.2.2"
-accompanist = "0.32.0"
-composeCompiler = "1.5.3"
-composeRuntime = "1.5.4"
-composeUI = "1.5.4"
-composeMaterial = "1.5.4"
 kotlin = "1.9.10"
-kotlinCoroutines = "1.6.4"
-hilt = "2.47"
-okHttp = "4.9.3"
-apollo = "3.7.5"
-lifecycle = "2.6.1"
-navigation = "2.5.3"
-egdsTokens = "4.6.7"
-egdsCoreComponents = "1.20.0"
-mockk = "1.12.3"
-
-
-
+composeBom = "2024.01.00"
+composeCompiler = "1.5.3"
+coroutines = "1.7.1"
 
 [libraries]
 
-# Gradle Plugins
-gp-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-gp-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-
 # Kotlin
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotin-coroutines-android = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines"}
+kotin-coroutines-test = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines"}
 
 # Android
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-android-coreKtx = { module = "androidx.core:core-ktx", version = "1.9.0" }
-android-appCompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
-android-material = { module = "com.google.android.material:material", version = "1.4.0" }
-android-fragmentKtx = { module = "androidx.fragment:fragment-ktx", version = "1.5.4" }
 
-# Android lifecycle
-android-lifecycle-runtimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
-android-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
-android-lifecycle-common-java8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycle" }
-android-lifecycle-reactivestreams-ktx = { module = "androidx.lifecycle:lifecycle-reactivestreams-ktx", version.ref = "lifecycle" }
-android-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
-android-annotation = { module = "androidx.annotation:annotation", version = "1.5.0" }
+# AndroidX
+androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0" }
+androidx-lifecycle-runtimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.7.0" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.8.2" }
+androidx-test-ext-jUnit = { module = "androidx.test.ext:junit", version = "1.1.5" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }
 
-# Jetpack compose
-android-compose-material = { module = "androidx.compose.material:material", version.ref = "composeMaterial" }
-android-compose-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "composeMaterial" }
-android-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "composeRuntime" }
-android-compose-runtimeLivedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "composeRuntime" }
-android-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "composeUI" }
-android-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeUI" }
-android-compose-uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeUI" }
-android-compose-uiTestJUnit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeUI" }
-android-compose-uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeUI" }
-android-compose-activity = { module = "androidx.activity:activity-compose", version = "1.6.1" }
-android-compose-constraintLayout = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.0.1" }
-android-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+# AndroidX Compose
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 
-# Accompanist (Utils for Jetpack Compose)
-accompanist-navigationMaterial = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
-accompanist-systemUIController = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
+# AndroidX Compose UI
+androidx-compose-ui = { module = "androidx.compose.ui:ui" }
+androidx-compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-compose-ui-toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-compose-ui-testJUnit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-testManifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
-# android navigation
-android-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
-android-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
-
-# Android test
-android-test-extJUnit = { module = "androidx.test.ext:junit", version = "1.1.4" }
-android-test-coreKtx = { module = "androidx.test:core-ktx", version = "1.5.0" }
-
-# Android espresso
-android-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.5.0" }
-
-# Hilt
-hilt-agp = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
-hilt-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
-hilt-androidCompiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
-hilt-navCompose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.0.0" }
-
-# Apollo
-apollo-mockServer = { module = "com.apollographql.apollo3:apollo-mockserver", version.ref = "apollo" }
-apollo-plugin = { module = "com.apollographql.apollo3:apollo-gradle-plugin", version.ref = "apollo" }
-apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollo" }
-apollo-sqlCache = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite", version.ref = "apollo" }
-apollo-cache = { module = "com.apollographql.apollo3:apollo-normalized-cache", version.ref = "apollo" }
-apollo-rx2-support = { module = "com.apollographql.apollo3:apollo-rx2-support", version.ref = "apollo" }
-
-# OkHttp
-okHttp-core = { module = "com.squareup.okhttp3:okhttp", version.ref = "okHttp" }
-okHttp-loggingInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okHttp" }
-okHttp-mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okHttp" }
-
-# Other third-party libraries
-timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
-junit = { module = "junit:junit", version = "4.+" }
-robolectric = { module = "org.robolectric:robolectric", version = "4.9" }
-mockk-ut = { module = "io.mockk:mockk", version.ref = "mockk" }
-mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
-turbine = { module = "app.cash.turbine:turbine", version = "1.0.0" }
-javax-inject = { module = "javax.inject:javax.inject", version = "1" }
-gson = { module = "com.google.code.gson:gson", version = "2.10.1" }
-
-# kotlin
-kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinCoroutines" }
-kotlin-coroutines-rx2 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", version.ref = "kotlinCoroutines" }
-
-# EGDS Components
-egds-components-vrbo = { module = "com.expediagroup.egds.components:components-core-vrbo", version.ref = "egdsCoreComponents" }
-egds-components-ferris = { module = "com.expediagroup.egds.components:components-core-ferris", version.ref = "egdsCoreComponents" }
-egds-components-partnercentral = { module = "com.expediagroup.egds.components:components-core-partnercentral", version.ref = "egdsCoreComponents" }
-egds-components-hotwire = { module = "com.expediagroup.egds.components:components-core-hotwire", version.ref = "egdsCoreComponents" }
-
-# EGDS Tokens
-egds-tokens-vrbo = { module = "com.expediagroup.egds.tokens:egds-tokens-android-vrbo", version.ref = "egdsTokens" }
-egds-tokens-ferris = { module = "com.expediagroup.egds.tokens:egds-tokens-android-ferris", version.ref = "egdsTokens" }
-egds-tokens-partnercentral = { module = "com.expediagroup.egds.tokens:egds-tokens-android-partnercentral", version.ref = "egdsTokens" }
-egds-tokens-hotwire = { module = "com.expediagroup.egds.tokens:egds-tokens-android-hotwire", version.ref = "egdsTokens" }
-
-# Analytics
-clickstream-sdk = { module = "com.eg.clickstream:eg-clickstream-sdk-android", version = "2.0.4" }
-clickstream-plugin = { module = "com.eg.clickstream:clickstream-gradle-plugin", version = "2.0.0" }
-egtnl-sdk = { module = "com.expedia.egtnl.bucket.android:egtnl-bucket-android", version = "1.0.1" }
+# Other
+jUnit = { module = "junit:junit", version = "4.13.2" }
 
 [bundles]
+androidx-compose-ui = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-ui-toolingPreview"]
 
 [plugins]
-pluginPublish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
+# Android
+androi-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 
-release = { id = "net.researchgate.release", version = "2.8.1" }
-androidApplication = { id = "com.android.application", version.ref = "agp" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
+# Kotlin
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+#Gradle
+gradle-pluginPublish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
+
+# Third-party plugins
+gmazzo-buildConfig = { id = "com.github.gmazzo.buildconfig", version = "5.3.5" }
