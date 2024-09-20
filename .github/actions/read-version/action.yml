@@ -1,0 +1,15 @@
+name: 'Read Version'
+description: 'Reads the current version from gradle.properties'
+runs:
+  using: 'composite'
+  steps:
+    - name: Read Version
+      shell: bash
+      run: |
+        if [ -f gradle.properties ]; then
+          version=$(grep '^version=' gradle.properties | cut -d'=' -f2 | tr -d '[:space:]')
+          echo "version=${version}" >> $GITHUB_ENV
+        else
+          echo "gradle.properties file not found!"
+          exit 1
+        fi
