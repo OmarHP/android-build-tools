@@ -23,4 +23,4 @@ runs:
       shell: bash
       run: |
         version=$(${{ github.action_path }}/semver.sh ${{ inputs.current_version }} ${{ inputs.increment_type }})
-        echo 'next_version=${version}' >> $GITHUB_OUTPUT
+        echo "next_version=${version}" >> $GITHUB_OUTPUT
