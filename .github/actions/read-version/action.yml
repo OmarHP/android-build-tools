@@ -15,7 +15,7 @@ runs:
       run: |
         if [ -f gradle.properties ]; then
           version=$(grep '^version=' gradle.properties | cut -d'=' -f2 | tr -d '[:space:]')
-          echo "current-version=${version}" >> $GITHUB_ENV
+          echo "current-version=${version}" >> $GITHUB_OUTPUT
         else
           echo "gradle.properties file not found!"
           exit 1
