@@ -37,3 +37,13 @@ jobs:
 
         - name: Run tests
           run: ./gradlew test
+
+        - name: Git Version
+          id: version
+          uses: codacy/git-version@2.7.1
+        - name: Use the version
+          run: |
+            echo ${{ steps.version.outputs.version }}
+        - name: Use the previous version
+          run: |
+            echo ${{ steps.version.outputs.previous-version }}
