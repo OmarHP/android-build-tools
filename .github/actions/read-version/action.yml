@@ -1,14 +1,21 @@
 name: 'Read Version'
 description: 'Reads the current version from gradle.properties'
+
+outputs:
+  current-version:
+    description: "Current version"
+    value: ${{ steps.read-version.outputs.current-version }}
+
 runs:
   using: 'composite'
   steps:
     - name: Read Version
+      id: read-version
       shell: bash
       run: |
         if [ -f gradle.properties ]; then
           version=$(grep '^version=' gradle.properties | cut -d'=' -f2 | tr -d '[:space:]')
-          echo "version=${version}" >> $GITHUB_ENV
+          echo "current-version=${version}" >> $GITHUB_ENV
         else
           echo "gradle.properties file not found!"
           exit 1
