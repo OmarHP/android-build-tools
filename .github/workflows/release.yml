@@ -45,14 +45,10 @@ jobs:
             current_version: ${{ steps.retrieve-current-version.outputs.current_version }}
             increment_type: ${{ github.event.inputs.release_type }}
 
-        - name: Release
+        - name: Release and Publish
           run: |
             git config --local user.email "github-actions@github.com"
             git config --local user.name "github-actions"
-            release_version= ${{ steps.calculate-next-version.outputs.next_version }}
+            release_version=${{ steps.calculate-next-version.outputs.next_version }}
             ./gradlew release -Prelease.releaseVersion=$release_version -Prelease.useAutomaticVersion=true
-
-        - name: Publish
-          run: |
-            ./gradlew publish
 
