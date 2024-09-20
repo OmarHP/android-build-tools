@@ -12,6 +12,11 @@ on:
           - patch
           - minor
           - major
+env:
+  GRADLE_FLAGS: >
+    -PREPSY_RELEASE_URL=${{ secrets.REPSY_RELEASE_URL }}
+    -PREPSY_USER=${{ secrets.REPSY_USER }}
+    -PREPSY_PASS=${{ secrets.REPSY_PASS }}
 
 jobs:
     build:
@@ -50,5 +55,5 @@ jobs:
             git config --local user.email "github-actions@github.com"
             git config --local user.name "github-actions"
             release_version=${{ steps.calculate-next-version.outputs.next_version }}
-            ./gradlew release -Prelease.releaseVersion=$release_version -Prelease.useAutomaticVersion=true
+            ./gradlew release $GRADLE_FLAGS -Prelease.releaseVersion=$release_version -Prelease.useAutomaticVersion=true
 
