@@ -1,16 +1,16 @@
-name: 'Read Version'
-description: 'Reads the current version from gradle.properties'
+name: 'Retrieve current version'
+description: 'Retrieves the current version of the project from the gradle.properties file.'
 
 outputs:
   current-version:
-    description: "Current version"
-    value: ${{ steps.read-version.outputs.current-version }}
+    description: "Current semantic version"
+    value: ${{ steps.retrieve-current-version.outputs.current-version }}
 
 runs:
   using: 'composite'
   steps:
-    - name: Read Version
-      id: read-version
+    - name: Retrieve Current Version
+      id: retrieve-current-version
       shell: bash
       run: |
         if [ -f gradle.properties ]; then

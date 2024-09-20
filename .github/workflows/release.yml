@@ -2,9 +2,16 @@ name: Release
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+    inputs:
+      release_type:
+        description: 'Release type (patch, minor or major)'
+        type: choice
+        required: true
+        default: 'patch'
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
     build:
@@ -26,10 +33,19 @@ jobs:
         - name: Setup Gradle
           uses: gradle/actions/setup-gradle@v4
 
-        - name: Read Version
-          id: read-version
-          uses: ./.github/actions/read-version
+        - name: Retrieve Current Version
+          id: retrieve-current-version
+          uses: ./.github/actions/retrieve-current-version
+
+        - name: Calculate next version
+          id: calculate-next-version
+          uses: ./.github/actions/calculate-next-version
+          with:
+            current-version: ${{ steps.retrieve-current-version.outputs.current-version }}
+            increment_type: ${{ github.event.inputs.release_type }}
 
         - name: Create Release
-          run: echo "Version is ${{ steps.read-version.outputs.current-version }}"
+          run: |
+            echo 'Current version: ${{ steps.retrieve-current-version.outputs.current-version }}'
+            echo 'Next version: ${{ steps.retrieve-current-version.outputs.current-version }}'
 
