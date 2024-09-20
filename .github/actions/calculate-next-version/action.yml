@@ -2,7 +2,7 @@ name: 'Calculate next version'
 description: 'Calculates the next semantic version (semver) based on the passed current version and increment type.'
 
 inputs:
-  current-version:
+  current_version:
     description: 'Current semantic version'
     required: true
   increment_type:
@@ -10,9 +10,9 @@ inputs:
     required: true
 
 outputs:
-  next-version:
+  next_version:
     description: "Next semantic version"
-    value: ${{ steps.calculate-next-version.outputs.next-version }}
+    value: ${{ steps.calculate-next-version.outputs.next_version }}
 
 
 runs:
@@ -22,4 +22,5 @@ runs:
       id: calculate-next-version
       shell: bash
       run: |
-        echo 'next-version=$(${{ github.action_path }}/semver.sh ${{ inputs.current-version }} ${{ inputs.increment_type }})' >> $GITHUB_OUTPUT
+        version=$(${{ github.action_path }}/semver.sh ${{ inputs.current_version }} ${{ inputs.increment_type }})
+        echo 'next_version=${version}' >> $GITHUB_OUTPUT

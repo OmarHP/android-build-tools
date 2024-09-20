@@ -41,11 +41,11 @@ jobs:
           id: calculate-next-version
           uses: ./.github/actions/calculate-next-version
           with:
-            current-version: ${{ steps.retrieve-current-version.outputs.current-version }}
+            current_version: ${{ steps.retrieve-current-version.outputs.current_version }}
             increment_type: ${{ github.event.inputs.release_type }}
 
         - name: Create Release
           run: |
-            echo 'Current version: ${{ steps.retrieve-current-version.outputs.current-version }}'
-            echo 'Next version: ${{ steps.retrieve-current-version.outputs.current-version }}'
+            echo 'Current version: ${{ steps.retrieve-current-version.outputs.current_version }}'
+            echo 'Next version: ${{ steps.calculate-next-version.outputs.next_version }}'
 
