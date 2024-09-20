@@ -31,5 +31,5 @@ jobs:
           uses: ./.github/actions/read-version
 
         - name: Create Release
-          run: echo "Version is ${{ read-version.outputs.current-version }}"
+          run: echo "Version is ${{ steps.read-version.outputs.current-version }}"
 
