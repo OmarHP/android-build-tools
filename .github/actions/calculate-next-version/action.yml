@@ -22,4 +22,4 @@ runs:
       id: calculate-next-version
       shell: bash
       run: |
-        echo 'next-version=$(${{ github.action_path }}/semver,sh ${{ inputs.current-version }} ${{ inputs.increment_type }})' >> $GITHUB_OUTPUT
+        echo 'next-version=$(${{ github.action_path }}/semver.sh ${{ inputs.current-version }} ${{ inputs.increment_type }})' >> $GITHUB_OUTPUT
