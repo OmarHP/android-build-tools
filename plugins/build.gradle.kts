@@ -1,3 +1,5 @@
+import java.net.URI
+
 plugins {
     `java-gradle-plugin`
     `maven-publish`
@@ -45,11 +47,21 @@ tasks.test {
     useJUnitPlatform()
 }
 
+val REPSY_USER: String? by project
+val REPSY_PASS: String? by project
+val REPSY_RELEASE_URL: String? by project
+
 publishing {
     repositories {
-        maven {
-            name = "PrivateMaven"
-            url = uri("https://repo.repsy.io/mvn/omarhp90/default")
+        if (REPSY_RELEASE_URL != null) {
+            maven {
+                name = "PrivateMaven"
+                url = URI.create(REPSY_RELEASE_URL)
+                credentials {
+                    username = REPSY_USER
+                    password = REPSY_PASS
+                }
+            }
         }
     }
 }

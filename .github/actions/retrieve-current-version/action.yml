@@ -1,0 +1,22 @@
+name: 'Retrieve current version'
+description: 'Retrieves the current version of the project from the gradle.properties file.'
+
+outputs:
+  current_version:
+    description: "Current semantic version"
+    value: ${{ steps.retrieve-current-version.outputs.current_version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Retrieve Current Version
+      id: retrieve-current-version
+      shell: bash
+      run: |
+        if [ -f gradle.properties ]; then
+          version=$(grep '^version=' gradle.properties | cut -d'=' -f2 | tr -d '[:space:]')
+          echo "current_version=${version}" >> $GITHUB_OUTPUT
+        else
+          echo "gradle.properties file not found!"
+          exit 1
+        fi
