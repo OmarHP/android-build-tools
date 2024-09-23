@@ -42,7 +42,7 @@ release {
     )
 
     git {
-        requireBranch = "release-flow"
+        requireBranch = "main"
         pushToRemote = "origin"
         pushToBranchPrefix = ""
         commitVersionFileOnly = false
