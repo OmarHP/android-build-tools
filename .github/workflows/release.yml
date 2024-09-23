@@ -18,6 +18,9 @@ env:
     -PREPSY_USER=${{ secrets.REPSY_USER }}
     -PREPSY_PASS=${{ secrets.REPSY_PASS }}
 
+permissions:
+    contents: write
+
 jobs:
     build:
         uses: ./.github/workflows/build.yml
