@@ -25,7 +25,7 @@ abstract class BaseAndroidPlugin : Plugin<Project> {
         val libraryExtension = project.extensions.findByType(LibraryExtension::class.java)
         val kotlinProjectExtension = project.extensions.findByType(KotlinAndroidProjectExtension::class.java)
 
-        // Check at least one configuration extension exists
+        // Verify that at least one of the configuration extensions exist
         val baseExtension: BaseExtension = appExtension ?: libraryExtension
         ?: throw IllegalStateException("The project has not been configured correctly")
 
@@ -66,6 +66,7 @@ abstract class BaseAndroidPlugin : Plugin<Project> {
             }
         }
 
+        // Only applies to library projects
         libraryExtension?.defaultConfig {
             consumerProguardFiles("consumer-rules.pro")
         }
@@ -76,7 +77,7 @@ abstract class BaseAndroidPlugin : Plugin<Project> {
             buildConfig = true
         }
 
-        // Set the compose options
+        // Set compose options
         with(baseExtension.composeOptions) {
             kotlinCompilerExtensionVersion = BuildConfig.COMPOSE_COMPILER_VERSION
         }
