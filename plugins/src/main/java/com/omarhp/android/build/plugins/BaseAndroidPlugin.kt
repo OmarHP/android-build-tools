@@ -6,6 +6,7 @@ import com.android.build.gradle.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplugin
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -15,6 +16,9 @@ abstract class BaseAndroidPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         // Apply the Kotlin Android plugin
         project.pluginManager.apply(KotlinAndroidPluginWrapper::class.java)
+
+        // Apply the Compose Compiler plugin
+        project.pluginManager.apply(ComposeCompilerGradleSubplugin::class.java)
 
         // Get configuration extensions
         val appExtension = project.extensions.findByType(AppExtension::class.java)
