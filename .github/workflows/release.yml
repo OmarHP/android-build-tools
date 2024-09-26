@@ -30,7 +30,7 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v4
           with:
-            token: ${{ secrets.deploy_key }}
+            token: ${{ secrets.DEPLOY_KEY }}
 
         - name: Set up Java
           uses: actions/setup-java@v4
