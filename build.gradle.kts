@@ -30,7 +30,7 @@ release {
     preCommitText = ""
     preTagCommitMessage = "[gradle-release-plugin] [skip ci] - new version commit: "
     tagCommitMessage = "[gradle-release-plugin] [skip ci] - creating tag: "
-    tagTemplate = "\${version}"
+    tagTemplate = "v\${version}"
     versionPropertyFile = "gradle.properties"
     versionProperties = listOf<Any>()
     buildTasks = listOf<Any>()
