@@ -3,27 +3,47 @@ package com.omarhp.android.build.plugins
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.LibraryExtension
+import dagger.hilt.android.plugin.HiltGradlePlugin
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplugin
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 abstract class BaseAndroidPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
+        // Register the extension
+        val buildFeaturesConfig = project.extensions.create("androidBuildFeatures", AndroidBuildFeaturesExtension::class.java)
+        buildFeaturesConfig.hiltConfiguration.enable.convention(true)
+        buildFeaturesConfig.hiltConfiguration.addDependencies.convention(true)
+
         // Apply the Kotlin Android plugin
         project.pluginManager.apply(KotlinAndroidPluginWrapper::class.java)
 
         // Apply the Compose Compiler plugin
         project.pluginManager.apply(ComposeCompilerGradleSubplugin::class.java)
 
+        // Apply the Hilt Android Plugin if set to enable
+        if (buildFeaturesConfig.hiltConfiguration.enable.get()) {
+            project.pluginManager.apply(HiltGradlePlugin::class.java)
+        }
+
+        // Apply the kapt plugin if required
+        if (buildFeaturesConfig.hiltConfiguration.enable.get()) {
+            project.pluginManager.apply("kotlin-kapt")
+            val kotlinKaptExtension = project.extensions.findByType(KaptExtension::class.java)
+            kotlinKaptExtension?.correctErrorTypes = true
+        }
+
         // Get configuration extensions
         val appExtension = project.extensions.findByType(AppExtension::class.java)
         val libraryExtension = project.extensions.findByType(LibraryExtension::class.java)
         val kotlinProjectExtension = project.extensions.findByType(KotlinAndroidProjectExtension::class.java)
+
 
         // Verify that at least one of the configuration extensions exist
         val baseExtension: BaseExtension = appExtension ?: libraryExtension
@@ -96,5 +116,12 @@ abstract class BaseAndroidPlugin : Plugin<Project> {
 
         // Set the JVMToolChain
         kotlinProjectExtension?.jvmToolchain(BuildConfig.JAVA_VERSION)
+
+        // Hilt Dependencies
+        val hiltConfiguration = buildFeaturesConfig.hiltConfiguration
+        if (hiltConfiguration.enable.get() && hiltConfiguration.addDependencies.get()) {
+            project.dependencies.add("implementation", BuildConfig.HILT_ANDROID_DEPENDENCY)
+            project.dependencies.add("kapt", BuildConfig.HILT_COMPILER_DEPENDENCY)
+        }
     }
 }

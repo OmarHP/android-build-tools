@@ -10,6 +10,8 @@ plugins {
 
 buildConfig {
     buildConfigField("COMPOSE_COMPILER_VERSION", libs.versions.composeCompiler.get())
+    buildConfigField("HILT_ANDROID_DEPENDENCY", libs.hilt.android.get().toString())
+    buildConfigField("HILT_COMPILER_DEPENDENCY", libs.hilt.compiler.get().toString())
     buildConfigField("ANDROID_COMPILE_SDK", 34)
     buildConfigField("ANDROID_TARGET_SDK", 34)
     buildConfigField("ANDROID_MIN_SDK", 26)
@@ -41,6 +43,7 @@ dependencies {
     implementation(libs.android.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.kotlin.composeCompilerPlugin)
+    implementation(libs.hilt.gradlePlugin)
     testImplementation(libs.kotlin.test)
 }
 
