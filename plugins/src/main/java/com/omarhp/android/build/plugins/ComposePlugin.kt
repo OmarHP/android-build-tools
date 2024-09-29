@@ -8,7 +8,6 @@ import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplug
 class ComposePlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-
         project.checkIsAndroidProject()
 
         // Apply the Compose Compiler plugin
