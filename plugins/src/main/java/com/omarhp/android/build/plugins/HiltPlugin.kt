@@ -5,9 +5,6 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 
-import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.jetbrains.kotlin.gradle.plugin.ide.IdeMultiplatformImport
-
 class HiltPlugin: Plugin<Project> {
     override fun apply(project: Project) {
         project.checkIsAndroidProject()
