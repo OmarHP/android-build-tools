@@ -30,14 +30,14 @@ gradlePlugin {
     plugins {
         create("AndroidLibrary") {
             id = "com.omarhp.android.library"
-            displayName = "Android library plug-in with predefined configuration"
+            displayName = "Android library plugin with predefined configuration"
             description = "Gradle plugin to build Android libraries with a predefined configuration"
             tags = listOf("android", "library", "build-tools")
             implementationClass = "com.omarhp.android.build.plugins.LibraryPlugin"
         }
         create("AndroidApplication") {
             id = "com.omarhp.android.application"
-            displayName = "Android application plug-in with predefined configuration"
+            displayName = "Android application plugin with predefined configuration"
             description = "Gradle plugin to build Android applications with a predefined configuration"
             tags = listOf("android", "app", "build-tools")
             implementationClass = "com.omarhp.android.build.plugins.ApplicationPlugin"
