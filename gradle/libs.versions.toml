@@ -5,6 +5,7 @@ coreKtx = "1.13.1"
 composeBom = "2024.09.02"
 composeCompiler = "1.5.15"
 coroutines = "1.9.0"
+hilt = "2.51.1"
 
 [libraries]
 
@@ -37,11 +38,20 @@ androidx-compose-ui-testJUnit4 = { module = "androidx.compose.ui:ui-test-junit4"
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-testManifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
+#Hilt
+hilt-gradlePlugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-navCompose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.1.0" }
+
 # Other
 jUnit = { module = "junit:junit", version = "4.13.2" }
 
 [bundles]
-androidx-compose-ui = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-ui-toolingPreview"]
+compose-implementation = ["androidx-activity-compose", "androidx-compose-material3", "androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-ui-toolingPreview"]
+compose-debugImplementation = ["androidx-compose-ui-tooling", "androidx-compose-ui-testManifest"]
+compose-androidTestImplementation = ["androidx-compose-ui-testJUnit4"]
 
 [plugins]
 # Android
@@ -55,6 +65,9 @@ kotlin-composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.r
 
 #Gradle
 gradle-pluginPublish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
+
+# Hilt
+hilt = { id = "dagger.hilt.android.plugin", version.ref = "hilt" }
 
 # Third-party plugins
 gmazzo-buildConfig = { id = "com.github.gmazzo.buildconfig", version = "5.3.5" }
