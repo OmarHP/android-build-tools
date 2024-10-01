@@ -54,6 +54,6 @@ tasks.getByName("afterReleaseBuild").dependsOn("publishAll")
 tasks.register("publishAll") {
     dependsOn(
         ":plugins:publishAllPublicationsToPrivateMavenRepository",
-        ":version-catalog:publishArtifactPublicationToMavenLocal",
+        ":version-catalog:publishArtifactPublicationToPrivateMavenRepository",
     )
 }
