@@ -6,6 +6,7 @@ composeBom = "2024.09.02"
 composeCompiler = "1.5.15"
 coroutines = "1.9.0"
 hilt = "2.51.1"
+navigation = "2.8.2"
 
 [libraries]
 
@@ -37,6 +38,11 @@ androidx-compose-ui-toolingPreview = { module = "androidx.compose.ui:ui-tooling-
 androidx-compose-ui-testJUnit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-testManifest = { module = "androidx.compose.ui:ui-test-manifest" }
+
+# AndroidX Navigation
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+androidx-hilt-navigationCompose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.2.0" }
+
 
 #Hilt
 hilt-gradlePlugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
