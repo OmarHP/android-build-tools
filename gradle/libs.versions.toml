@@ -6,6 +6,7 @@ composeBom = "2024.09.02"
 composeCompiler = "1.5.15"
 coroutines = "1.9.0"
 hilt = "2.51.1"
+navigation = "2.8.2"
 
 [libraries]
 
@@ -29,6 +30,7 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 # AndroidX Compose
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-material = { module = "androidx.compose.material:material" }
 
 # AndroidX Compose UI
 androidx-compose-ui = { module = "androidx.compose.ui:ui" }
@@ -38,18 +40,23 @@ androidx-compose-ui-testJUnit4 = { module = "androidx.compose.ui:ui-test-junit4"
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-testManifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
+# AndroidX Navigation
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navigation" }
+androidx-hilt-navigationCompose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.2.0" }
+
 #Hilt
 hilt-gradlePlugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
-hilt-navCompose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.1.0" }
+hilt-navigationCompose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.2.0" }
 
 # Other
 jUnit = { module = "junit:junit", version = "4.13.2" }
 
 [bundles]
-compose-implementation = ["androidx-activity-compose", "androidx-compose-material3", "androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-ui-toolingPreview"]
+compose-implementation = ["androidx-activity-compose", "androidx-compose-material3", "androidx-compose-material", "androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-ui-toolingPreview"]
 compose-debugImplementation = ["androidx-compose-ui-tooling", "androidx-compose-ui-testManifest"]
 compose-androidTestImplementation = ["androidx-compose-ui-testJUnit4"]
 
